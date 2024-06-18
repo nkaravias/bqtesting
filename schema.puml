@@ -1,0 +1,32 @@
+@startuml schema
+
+entity "Appcodes" as Appcodes {
+  * appcode : STRING
+  --
+  custodian : STRING
+  L3 : STRING
+  L4 : STRING
+  L5 : STRING
+}
+
+entity "ProjectCodes" as ProjectCodes {
+  * project_code : STRING
+  --
+  appcode : STRING
+  domain : STRING
+}
+
+entity "Projects" as Projects {
+  * project_name : STRING
+  --
+  project_code : STRING
+  description : STRING
+  project_id : STRING
+  landing_zone_id : STRING
+  service_tier : STRING
+}
+
+Appcodes ||..|| ProjectCodes : has
+ProjectCodes ||..|| Projects : has
+
+@enduml
